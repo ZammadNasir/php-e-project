@@ -1,5 +1,5 @@
 <?php
-include('./config.php');
+include('./includes/config.php');
 session_start();
 if (!isset($_SESSION['useremail'])) {
 	header('location: login.php');
@@ -23,12 +23,10 @@ if (!isset($_SESSION['useremail'])) {
 </head>
 
 <body>
+	<?php include('./includes/topnav.php') ?>
+	<?php include('./includes/middle_nav.php') ?>
+	<?php include('./includes/primary_nav.php') ?>
 
-	<?php include('./topnav.php') ?>
-
-	<?php include('./middle_nav.php') ?>
-
-	<?php include('./primary_nav.php') ?>
 
 	<section id="center" class="center_o pt-4 pb-4 bg-light">
 		<div class="container-xl">
@@ -150,7 +148,8 @@ if (!isset($_SESSION['useremail'])) {
 		</div>
 	</section>
 
-	<?php include('./footer.php') ?>
+
+	<?php include('./includes/footer.php') ?>
 
 	<script>
 		window.onscroll = function() {

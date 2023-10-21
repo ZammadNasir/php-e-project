@@ -13,17 +13,19 @@
                             <i class="fa fa-navicon me-1"></i> ALL CATEGORIES
                         </a>
                         <ul class="dropdown-menu drop_cat" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Makeup</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Earrings</a></li>
-                            <li><a class="dropdown-item" href="#">Skincare</a></li>
-                            <li><a class="dropdown-item" href="#">Rings</a></li>
-                            <li><a class="dropdown-item" href="#">Haircare</a></li>
-                            <li><a class="dropdown-item" href="#">Pendants</a></li>
-                            <li><a class="dropdown-item" href="#">Ladies perfume</a></li>
-                            <li><a class="dropdown-item" href="#">Necklace</a></li>
-                            <li><a class="dropdown-item" href="#">Mens perfume</a></li>
-                            <li><a class="dropdown-item" href="#">Bracelets</a></li>
+                            <?php
+                            $select = "select * from product_categories order by category_name desc";
+                            $result = mysqli_query($connection, $select);
+                            $category_count = mysqli_num_rows($result);
+                            if (mysqli_num_rows($result)) {
+                                while ($data = mysqli_fetch_array($result)) {
+                                    $category = $data['category_id'];
+                            ?>
+                                    <li><a class="dropdown-item" href="shop.php?category/=<?php echo $data['category_name'] ?>"> <?php echo $data['category_name'] ?> </a></li>
+                            <?php
+                                }
+                            }
+                            ?>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -43,7 +45,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact.php">Contact</a>
                     </li>
 
                 </ul>

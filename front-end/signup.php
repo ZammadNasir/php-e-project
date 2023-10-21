@@ -1,5 +1,5 @@
 <?php
-include('./config.php');
+include('./includes/config.php');
 if (isset($_POST['signup_btn'])) {
     $name = $_POST['name'];
     $address = $_POST['address'];

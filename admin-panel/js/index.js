@@ -12,20 +12,3 @@ document.querySelectorAll("#modaltoggle").forEach((el) => {
 modalCloseBtn.addEventListener("click", () => {
   updateForm.style.display = "none";
 });
-
-const liElements = document.querySelectorAll(".nav-item");
-
-liElements.forEach((li, index) => {
-  li.addEventListener("click", () => {
-    liElements.forEach((li, i) => {
-      if (i === index) {
-        li.classList.add("active");
-        li.style.backgroundColor = "red";
-        console.log("adfasd");
-      } else {
-        console.log("adfasd");
-        li.classList.remove("active");
-      }
-    });
-  });
-});

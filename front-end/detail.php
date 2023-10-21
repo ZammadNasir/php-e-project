@@ -1,5 +1,5 @@
 <?php
-include('config.php');
+include('./includes/config.php');
 // sending items to cart table
 if (isset($_POST['cart-btn'])) {
 	$id = $_POST['id'];
@@ -39,12 +39,10 @@ if (isset($_POST['cart-btn'])) {
 </head>
 
 <body>
+	<?php include('./includes/topnav.php') ?>
+	<?php include('./includes/middle_nav.php') ?>
+	<?php include('./includes/primary_nav.php') ?>
 
-	<?php include('./topnav.php') ?>
-
-	<?php include('./middle_nav.php') ?>
-
-	<?php include('./primary_nav.php') ?>
 
 	<section id="center" class="center_o pt-4 pb-4 bg-light">
 		<div class="container-xl">
@@ -168,7 +166,9 @@ if (isset($_POST['cart-btn'])) {
 
 		</div>
 	</section>
-	<?php include('./footer.php') ?>
+
+
+	<?php include('./includes/footer.php') ?>
 
 	<script>
 		window.onscroll = function() {

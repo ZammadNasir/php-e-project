@@ -1,3 +1,6 @@
+<?php
+include('./includes/config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,14 +20,9 @@
 </head>
 
 <body>
-	<?php
-	include('config.php');
-	?>
-	<?php include('./topnav.php') ?>
-
-	<?php include('./middle_nav.php') ?>
-
-	<?php include('./primary_nav.php') ?>
+	<?php include('./includes/topnav.php') ?>
+	<?php include('./includes/middle_nav.php') ?>
+	<?php include('./includes/primary_nav.php') ?>
 
 	<section id="center" class="center_home">
 		<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -214,7 +212,7 @@
 											<div class="prod_2i1 clearfix">
 												<div class="grid clearfix">
 													<figure class="effect-jazz mb-0">
-														<a href="detail.html"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
+														<a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
 													</figure>
 												</div>
 											</div>
@@ -634,7 +632,7 @@
 	</section>
 
 
-	<?php include('./footer.php') ?>
+	<?php include('./includes/footer.php') ?>
 
 	<script>
 		window.onscroll = function() {

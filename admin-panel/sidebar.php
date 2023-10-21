@@ -78,6 +78,21 @@ if (!isset($_SESSION['username'])) {
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        // const liElements = document.querySelectorAll(".nav-item");
+
+        // liElements.forEach((li, index) => {
+        //     li.addEventListener("click", () => {
+        //         liElements.forEach((li, i) => {
+        //             if (i === index) {
+        //                 li.classList.add("active");
+        //             } else {
+        //                 li.classList.remove("active");
+        //             }
+        //         });
+        //     });
+        // });
+    </script>
 </body>
 
 </html>
