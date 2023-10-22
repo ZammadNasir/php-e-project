@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2023 at 09:39 PM
+-- Generation Time: Oct 22, 2023 at 10:44 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -57,15 +57,6 @@ CREATE TABLE `cart` (
   `quantity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`product_id`, `name`, `image`, `price`, `quantity`) VALUES
-(2, 'Ring two Tone your side', 'ring3.jpg', '1200', 2),
-(3, 'Ring silver oval black', 'ring4.jpg', '4400', 2),
-(16, 'Thick silver chain bracelet', 'bracelet5.jpg', '2300', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -88,6 +79,28 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`customer_id`, `name`, `address`, `email`, `number`, `password`) VALUES
 (1, 'asad', '', 'asad@gmail.com', -1234, 'asad123'),
 (2, 'fahad', '', 'fahad@gmail.com', 123908123, 'fahad123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `Name` varchar(255) DEFAULT NULL,
+  `Address` varchar(255) DEFAULT NULL,
+  `Email` varchar(255) DEFAULT NULL,
+  `WorkPhoneNo` int(255) DEFAULT NULL,
+  `CellNo` int(255) DEFAULT NULL,
+  `DateOfBirth` varchar(255) DEFAULT NULL,
+  `Remarks` varchar(255) DEFAULT NULL,
+  `orderId` int(11) NOT NULL,
+  `ProductId` int(11) DEFAULT NULL,
+  `CustomerId` int(11) DEFAULT NULL,
+  `TotalProducts` varchar(255) DEFAULT NULL,
+  `TotalPrice` int(255) DEFAULT NULL,
+  `OrderTime` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -205,6 +218,14 @@ ALTER TABLE `customers`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`orderId`),
+  ADD KEY `ProductId` (`ProductId`),
+  ADD KEY `CustomerId` (`CustomerId`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
@@ -234,6 +255,12 @@ ALTER TABLE `customers`
   MODIFY `customer_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
@@ -248,6 +275,13 @@ ALTER TABLE `product_categories`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`ProductId`) REFERENCES `products` (`product_id`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`CustomerId`) REFERENCES `customers` (`customer_id`);
 
 --
 -- Constraints for table `products`

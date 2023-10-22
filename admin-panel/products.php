@@ -111,13 +111,21 @@ if (isset($_POST['update-product'])) {
                                     $selectresult = mysqli_query($connection, $selectproduct);
                                     if (mysqli_num_rows($selectresult) > 0) {
                                         while ($rows = mysqli_fetch_array($selectresult)) {
+                                            $category_id = $rows['product_category'];
                                     ?>
 
                                             <td><?php echo $rows['product_id'] ?></td>
                                             <td><?php echo $rows['product_name'] ?></td>
                                             <td><?php echo $rows['product_price'] ?></td>
                                             <td><img class="img-fluid" src="uploadimg/<?php echo $rows['product_image'] ?>" width="40"></td>
-                                            <td><?php echo $rows['product_category'] ?></td>
+                                            <?php
+                                            $select = "select category_name from product_categories where category_id = $category_id";
+                                            $category = mysqli_query($connection, $select);
+                                            if (mysqli_num_rows($category) > 0) {
+                                                $cate = mysqli_fetch_array($category);
+                                            }
+                                            ?>
+                                            <td><?php echo $cate['category_name'] ?></td>
                                             <td><a href="products.php?edit=<?php echo $rows['product_id'] ?>" class="edit btn btn-sm btn-primary" title="edit product" id="modaltoggle">Edit</a></td>
                                             <td><a href="products.php?delete=<?php echo $rows['product_id'] ?>" class="btn btn-sm btn-danger" title="delete product" onclick="return confirm('are you sure you want to delete this?')">Delete</a></td>
                                 </tr>

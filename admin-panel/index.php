@@ -22,6 +22,8 @@ session_start();
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -72,7 +74,24 @@ session_start();
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Total Sale</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <h6 class="mb-0">
+                                    Rs.
+                                    <?php
+                                    $select = "select TotalPrice from orders";
+                                    $result = mysqli_query($connection, $select);
+                                    $total_sales = 0;
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($data = mysqli_fetch_assoc($result)) {
+                                            $total_price = $data['TotalPrice'];
+                                            $total_sales += $total_price;
+                                        }
+                                        echo $total_sales;
+                                    } else {
+                                        echo "0";
+                                    }
+
+                                    ?>
+                                </h6>
                             </div>
                         </div>
                     </div>
@@ -109,28 +128,51 @@ session_start();
                         <a href="">Show All</a>
                     </div>
                     <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0 table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0 table-responsive" id="orders-table">
                             <thead>
                                 <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Date</th>
+                                    <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">WorkPhoneNo.</th>
+                                    <th scope="col">CellNo.</th>
+                                    <th scope="col">Date Of Birth</th>
+                                    <th scope="col">Order Id</th>
                                     <th scope="col">Product Id</th>
-                                    <th scope="col">Product Title</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Customer name</th>
-                                    <th scope="col">Customer contact</th>
-                                    <th scope="col">Customer contact</th>
+                                    <th scope="col">Customer Id</th>
+                                    <th scope="col">Total Products</th>
+                                    <th scope="col">Total Price</th>
+                                    <th scope="col">Order Time</th>
+                                    <th scope="col">Remarks</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                </tr>
+                                <?php
+                                $select_order = mysqli_query($connection, "select * from orders");
+                                if (mysqli_num_rows($select_order) > 0) {
+                                    while ($data = mysqli_fetch_array($select_order)) {
+                                ?>
+                                        <tr>
+                                            <td><?php echo $data['Name'] ?></td>
+                                            <td><?php echo $data['Address'] ?></td>
+                                            <td><?php echo $data['Email'] ?></td>
+                                            <td><?php echo $data['WorkPhoneNo'] ?></td>
+                                            <td><?php echo $data['CellNo'] ?></td>
+                                            <td><?php echo $data['DateOfBirth'] ?></td>
+                                            <td><?php echo $data['orderId'] ?></td>
+                                            <td><?php echo $data['ProductId'] ?></td>
+                                            <td><?php echo $data['CustomerId'] ?></td>
+                                            <td><?php echo $data['TotalProducts'] ?></td>
+                                            <td><?php echo $data['TotalPrice'] ?></td>
+                                            <td><?php echo $data['OrderTime'] ?></td>
+                                            <td><?php echo $data['Remarks'] ?></td>
+                                        </tr>
 
+                                <?php
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -170,9 +212,14 @@ session_start();
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        let table = new DataTable('#orders-table');
+    </script>
 </body>
 
 </html>

@@ -491,6 +491,16 @@ font-size:24px;
 line-height:45px;
 border-radius:3px; 
  }
+.prod_2in ul button{
+box-shadow: 0px 1px 7px 0px rgb(117 114 114 / 18%);
+background:#fff;
+width:50px;
+height:45px;
+display:block;
+font-size:24px;
+line-height:45px;
+border-radius:3px; 
+ }
 .prod_2in ul li a:hover{
 background:#f7ba01;
 color:#fff; 

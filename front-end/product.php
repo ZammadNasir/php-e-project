@@ -1,7 +1,10 @@
 <?php
 include('./includes/config.php');
+$product_search = $_GET['product_search'];
+if ($product_search == "") {
+    header('location: javascript://history.go(-1)');
+}
 // sending items to cart table
-
 if (isset($_POST['cart-btn'])) {
     $id = $_POST['id'];
     $name = $_POST['name'];
@@ -52,8 +55,9 @@ if (isset($_POST['cart-btn'])) {
 
     .prod_2in ul button:hover {
         background: #f7ba01;
-        color: #fff;
+        color: white;
     }
+
 
     .prod_2in ul i:hover {
         background: #f7ba01;
@@ -88,7 +92,7 @@ if (isset($_POST['cart-btn'])) {
                             $select = "select * from product_categories order by category_name desc";
                             $result = mysqli_query($connection, $select);
                             $category_count = mysqli_num_rows($result);
-                            if (mysqli_num_rows($result) > 0) {
+                            if (mysqli_num_rows($result)) {
                                 while ($data = mysqli_fetch_array($result)) {
                                     $category = $data['category_id'];
                             ?>
@@ -125,7 +129,7 @@ if (isset($_POST['cart-btn'])) {
                         <div class="prod_pg1r1 row">
                             <div class="col-md-9">
                                 <div class="prod_pg1r1l">
-                                    <p class="mt-3 mb-0">Products found
+                                    <p class="mt-3 mb-0">
                                         <?php
 
                                         if (isset($_GET['category/'])) {
@@ -133,7 +137,7 @@ if (isset($_POST['cart-btn'])) {
                                             $select = "SELECT * FROM products INNER JOIN product_categories ON product_category = category_id and category_name = '$category_name'";
                                             $result = mysqli_query($connection, $select);
                                             $product_count = mysqli_num_rows($result);
-                                            echo $product_count;
+                                            echo "Products found" . $product_count;
                                         }
                                         ?>
                                     </p>
@@ -141,9 +145,9 @@ if (isset($_POST['cart-btn'])) {
                             </div>
                             <div class="col-md-3">
                                 <div class="prod_pg1r1r">
-                                    <select name="categories" style="height:50px;" class="form-select" required="">
+                                    <select name="categories" style="height:50px;" class="form-select" required="" id="filter">
                                         <option value="">Relevance</option>
-                                        <option>Best sellers</option>
+                                        <option>select</option>
                                         <option>Name, A to Z</option>
                                         <option>Name, Z to A</option>
                                         <option>Price, high to low</option>
@@ -156,45 +160,45 @@ if (isset($_POST['cart-btn'])) {
                         <div class="prod_pg1r2 mt-4 row">
 
                             <?php
-                            if (isset($_GET['category/'])) {
-                                $category_name = $_GET['category/'];
-                                $select = "SELECT * FROM products INNER JOIN product_categories ON product_category = category_id and category_name = '$category_name'";
-                                $result = mysqli_query($connection, $select);
-                                if (mysqli_num_rows($result) > 0) {
-                                    while ($data = mysqli_fetch_array($result)) {
+                            $product_search = $_GET['product_search'];
+                            $select = "SELECT * FROM products WHERE product_name LIKE '%$product_search%'";
+                            $result = mysqli_query($connection, $select);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($data = mysqli_fetch_array($result)) {
                             ?>
-                                        <form class="col-md-4 mt-4" method="post">
-                                            <div class="prodinm clearfix">
-                                                <input type="hidden" name="id" value="<?php echo $data['product_id'] ?>">
-                                                <input type="hidden" name="quantity" min="1" value="1" class="form-control mt-4" style="width: 140px; height:50px; margin-right:10px; float:left;">
-                                                <div class="prod_2im position-relative clearfix">
-                                                    <div class="prod_2i1 clearfix">
-                                                        <div class="grid clearfix">
-                                                            <figure class="effect-jazz mb-0">
-                                                                <a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
-                                                                <input type="hidden" name="image" value="<?php echo $data['product_image'] ?>">
-                                                            </figure>
-                                                        </div>
-                                                    </div>
-                                                    <div class="prod_2in clearfix position-absolute bg-light w-100 p-3 text-center">
-                                                        <ul class="mb-0">
-                                                            <button class="d-inline-block me-3 border-0" type="submit" name="cart-btn"><a href="#"><i class="fa fa-shopping-cart"></i></a></button>
-                                                            <li class="d-inline-block"><a href="detail.php?product/=<?php echo $data['product_name'] ?>"><i class="fa fa-eye"></i></a></li>
-                                                            <input type="hidden" name="name" value="<?php echo $data['product_name'] ?>">
-                                                        </ul>
+                                    <form class="col-md-4 mt-4" method="post">
+                                        <div class="prodinm clearfix">
+                                            <input type="hidden" name="id" value="<?php echo $data['product_id'] ?>">
+                                            <input type="hidden" name="quantity" min="1" value="1" class="form-control mt-4" style="width: 140px; height:50px; margin-right:10px; float:left;">
+                                            <div class="prod_2im position-relative clearfix">
+                                                <div class="prod_2i1 clearfix">
+                                                    <div class="grid clearfix">
+                                                        <figure class="effect-jazz mb-0">
+                                                            <a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
+                                                            <input type="hidden" name="image" value="<?php echo $data['product_image'] ?>">
+                                                        </figure>
                                                     </div>
                                                 </div>
-                                                <div class="prod_2i2 pt-4 pb-4 ps-3 pe-3 bg-white clearfix">
-                                                    <h6 class="mt-2"><a href="detail.php?product/=<?php echo $data['product_name'] ?>"><?php echo $data['product_name'] ?></a></h6>
-                                                    <hr>
-                                                    <h6 class="fw-normal mb-0"><span class="pull-left fw-bold col_yell">Rs. <?php echo $data['product_price'] ?></span></h6>
-                                                    <input type="hidden" name="price" value="<?php echo $data['product_price'] ?>">
+                                                <div class="prod_2in clearfix position-absolute bg-light w-100 p-3 text-center">
+                                                    <ul class="mb-0">
+                                                        <button class="d-inline-block border-0 me-3" type="submit" name="cart-btn"><i class="fa fa-shopping-cart"></i></button>
+                                                        <li class="d-inline-block"><a href="detail.php?product/=<?php echo $data['product_name'] ?>"><i class="fa fa-eye"></i></a></li>
+                                                        <input type="hidden" name="name" value="<?php echo $data['product_name'] ?>">
+                                                    </ul>
                                                 </div>
                                             </div>
-                                        </form>
+                                            <div class="prod_2i2 pt-4 pb-4 ps-3 pe-3 bg-white clearfix">
+                                                <h6 class="mt-2"><a href="detail.php?product/=<?php echo $data['product_name'] ?>"><?php echo $data['product_name'] ?></a></h6>
+                                                <hr>
+                                                <h6 class="fw-normal mb-0 col_yell fw-bold">Rs. <span class="pull-lef fw-bold col_yell price"><?php echo $data['product_price'] ?></span></h6>
+                                                <input type="hidden" name="price" value="<?php echo $data['product_price'] ?>">
+                                            </div>
+                                        </div>
+                                    </form>
                             <?php
-                                    }
                                 }
+                            } else {
+                                echo "<p>No products found</p>";
                             }
                             ?>
 
@@ -243,6 +247,19 @@ if (isset($_POST['cart-btn'])) {
                 document.body.style.paddingTop = '0'
             }
         }
+
+        // let filter = document.querySelector('#filter');
+        // let allPrices = []
+        // filter.addEventListener('change', (e) => {
+        //     let prices = document.querySelectorAll('.price')
+        //     prices.forEach(price => {
+        //         allPrices.push(price.textContent)
+        //     })
+        //     allPrices.sort(function(a, b) {
+        //         return a - b;
+        //     })
+        //     console.log(allPrices);
+        // })
     </script>
 
 </body>

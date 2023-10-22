@@ -37,7 +37,7 @@ include('./includes/config.php');
 					<div class="carousel-caption d-md-block">
 						<h1 class="text-white fw-normal font_50 text-uppercase">Top Deal Today ! <br> <span class="fw-bold">Cosmetics</span></h1>
 						<p class="fs-6 mt-4">Get up to <span class="col_yell fw-bold">50%</span> off Today Only</p>
-						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="makeup.php">SHOP NOW</a></h6>
+						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="#">SHOP NOW</a></h6>
 					</div>
 				</div>
 				<div class="carousel-item">
@@ -45,7 +45,7 @@ include('./includes/config.php');
 					<div class="carousel-caption d-md-block">
 						<h1 class="text-white fw-normal font_50 text-uppercase">Top Deal Today ! <br> <span class="fw-bold">Jewelry</span></h1>
 						<p class="fs-6 mt-4">Get up to <span class="col_yell fw-bold">50%</span> off Today Only</p>
-						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="rings.php">SHOP NOW</a></h6>
+						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="#">SHOP NOW</a></h6>
 					</div>
 				</div>
 				<div class="carousel-item">
@@ -53,7 +53,7 @@ include('./includes/config.php');
 					<div class="carousel-caption d-md-block">
 						<h1 class="text-white fw-normal font_50 text-uppercase">Best! <br> <span class="fw-bold">Necklace</span></h1>
 						<p class="fs-6 mt-4">Get up to <span class="col_yell fw-bold">50%</span> off Today Only</p>
-						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="necklace.php">SHOP NOW</a></h6>
+						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="#">SHOP NOW</a></h6>
 					</div>
 				</div>
 			</div>
@@ -87,7 +87,7 @@ include('./includes/config.php');
 								<div class="prod_2i1 clearfix">
 									<div class="grid clearfix">
 										<figure class="effect-jazz mb-0">
-											<a href="detail.html"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
+											<a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
 										</figure>
 									</div>
 								</div>
@@ -119,7 +119,7 @@ include('./includes/config.php');
 								<div class="prod_2i1 clearfix">
 									<div class="grid clearfix">
 										<figure class="effect-jazz mb-0">
-											<a href="detail.html"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
+											<a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
 										</figure>
 									</div>
 								</div>
@@ -149,7 +149,7 @@ include('./includes/config.php');
 						<div class="clearfix deal_1li">
 							<div class="grid clearfix">
 								<figure class="effect-jazz mb-0">
-									<a href="detail.html"><img src="https://plus.unsplash.com/premium_photo-1674748385760-d846825598ab?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" height="584" class="w-100" alt="abc"></a>
+									<a href="#"><img src="https://plus.unsplash.com/premium_photo-1674748385760-d846825598ab?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" height="584" class="w-100" alt="abc"></a>
 								</figure>
 							</div>
 						</div>
@@ -181,7 +181,7 @@ include('./includes/config.php');
 											<div class="prod_2i1 clearfix">
 												<div class="grid clearfix">
 													<figure class="effect-jazz mb-0">
-														<a href="detail.html"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
+														<a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
 													</figure>
 												</div>
 											</div>
@@ -258,11 +258,11 @@ include('./includes/config.php');
 								while ($data = mysqli_fetch_array($result)) {
 							?>
 									<div class="col-md-3">
-										<div class="prod_2im position-relative clearfix">
+										<div class="prod_2im position-relative clearfix text-center">
 											<div class="prod_2i1 clearfix">
 												<div class="grid clearfix">
 													<figure class="effect-jazz mb-0">
-														<a href="detail.html"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
+														<a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
 													</figure>
 												</div>
 											</div>
@@ -289,11 +289,11 @@ include('./includes/config.php');
 								while ($data = mysqli_fetch_array($result)) {
 							?>
 									<div class="col-md-3">
-										<div class="prod_2im position-relative clearfix">
+										<div class="prod_2im position-relative clearfix text-center">
 											<div class="prod_2i1 clearfix">
 												<div class="grid clearfix">
 													<figure class="effect-jazz mb-0">
-														<a href="detail.html"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
+														<a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
 													</figure>
 												</div>
 											</div>
@@ -314,304 +314,8 @@ include('./includes/config.php');
 
 
 					</div>
-					<div class="tab-pane" id="profile">
-						<div class="prod_o2i row">
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/19.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Sed Cursus Ante</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">New Product</a></h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/20.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Nulla Quis Sem</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">Trending Product</a>
-										</h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/21.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Lorem Ipsum Dolor</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">Popular Product</a>
-										</h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/22.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Integer Nec Odio</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">Demanded Product</a>
-										</h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane" id="settings">
-						<div class="prod_o2i row">
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/6.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Sed Cursus Ante</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">New Product</a></h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/7.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Nulla Quis Sem</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">Trending Product</a>
-										</h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/8.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Lorem Ipsum Dolor</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">Popular Product</a>
-										</h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/9.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Integer Nec Odio</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">Demanded Product</a>
-										</h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<div class="tab-pane" id="product">
-						<div class="prod_o2i row">
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/10.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Sed Cursus Ante</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">New Product</a></h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/11.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Nulla Quis Sem</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">Trending Product</a>
-										</h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/12.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Lorem Ipsum Dolor</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">Popular Product</a>
-										</h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="prod_2im position-relative clearfix">
-									<div class="prod_2i1 clearfix">
-										<div class="grid clearfix">
-											<figure class="effect-jazz mb-0">
-												<a href="detail.html"><img src="img/13.jpg" class="w-100" alt="abc"></a>
-											</figure>
-										</div>
-									</div>
-									<div class="prod_2i2 pt-4 pb-4 ps-3 pe-3  clearfix">
-										<h6><a href="detail.html">Integer Nec Odio</a></h6>
-										<h6 class="font_13"><a class="col_light" href="detail.html">Demanded Product</a>
-										</h6>
-										<hr>
-										<h6 class="fw-normal mb-0"><span class="text-decoration-line-through col_light">$79.00</span> <span class="pull-right fw-bold col_yell">$68.00</span></h6>
-									</div>
-									<div class="prod_2i3 clearfix position-absolute w-100">
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3">NEW
-										</h6>
-										<h6 class="bg_yell d-inline-block pt-1 pb-1 font_13 text-white ps-3 pe-3 pull-right">
-											40%</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+
 				</div>
 			</div>
 

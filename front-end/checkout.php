@@ -4,6 +4,60 @@ session_start();
 if (!isset($_SESSION['useremail'])) {
 	header('location: login.php');
 }
+$customer_id = 0;
+$customer_email = $_SESSION['useremail'];
+$select = "select * from customers where '$customer_email' = email";
+$select_id = mysqli_query($connection, $select);
+if (mysqli_num_rows($select_id) > 0) {
+	while ($select_user = mysqli_fetch_assoc($select_id)) {
+
+		$customer_id = $select_user['customer_id'];
+	}
+}
+if (isset($_POST['checkout-btn'])) {
+	$name = $_POST['name'];
+	$address = $_POST['address'];
+	$email = $_POST['email'];
+	$workno = $_POST['workno'];
+	$cellno = $_POST['cellno'];
+	$dob = $_POST['dob'];
+	$remarks = $_POST['remarks'];
+
+	$cart_query = mysqli_query($connection, "select * from cart");
+	$price_total = 0;
+	if (mysqli_num_rows($cart_query) > 0) {
+		while ($product_item = mysqli_fetch_assoc($cart_query)) {
+			$product_name[] = $product_item['product_id'] . ') ' . $product_item['name'] . '(' . $product_item['quantity'] . ')';
+			$product_id[] =  $product_item['product_id'];
+
+			$product_price = number_format($product_item['price'] * $product_item['quantity']);
+			$pattern = "/,/i";
+			$product_price =  preg_replace($pattern, "", $product_price);
+			$price_total += $product_price;
+		}
+	}
+	$total_product = implode(' | ', $product_name);
+	$total_ids = implode('|', $product_id);
+	$detail_query = mysqli_query($connection, "insert into orders (Name, Address, Email, WorkPhoneNo, CellNo, DateOfBirth, Remarks, ProductId, CustomerId, TotalProducts, TotalPrice)
+	values ( '$name', '$address', '$email', $workno, $cellno, '$dob', '$remarks', '$total_ids', $customer_id, '$total_product', $price_total)");
+
+	if ($cart_query and $detail_query) {
+		echo "<div class='confirm-msg'>
+		<div class='container'>
+			<div class='confirm-msg-inner'>
+				<h4 class='mb-5'>Your order has been placed</h4>
+				<p>Your name : <span> $name </span></p>
+				<p>Your address : <span> $address</span></p>
+				<p>Your number : <span> $cellno</span></p>
+				<p>Your email : <span> $email</span></p>
+				<p>Your total : <span> $price_total</span></p>
+				<a href='../front-end/index.php' class='button mt-3'>Continue Shopping</a>
+			</div>
+		</div>
+	</div>";
+	}
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,19 +75,44 @@ if (!isset($_SESSION['useremail'])) {
 	<script src="js/bootstrap.bundle.min.js"></script>
 
 </head>
+<style>
+	.confirm-msg {
+		height: 100vh;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.58);
+		position: fixed;
+		inset: 0;
+		z-index: 99;
+	}
+
+	.confirm-msg-inner {
+		background-color: blue;
+		width: 380px;
+		padding: 35px 20px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		border-radius: 4px;
+		color: white;
+		z-index: 98;
+	}
+</style>
 
 <body>
 	<?php include('./includes/topnav.php') ?>
 	<?php include('./includes/middle_nav.php') ?>
 	<?php include('./includes/primary_nav.php') ?>
 
-
 	<section id="center" class="center_o pt-4 pb-4 bg-light">
 		<div class="container-xl">
 			<div class="row center_o1 text-center">
 				<div class="col-md-12">
 					<h1>CHECKOUT</h1>
-					<h6 class="d-inline-block  font_14 col_yell bg-white"><a class="col_light" href="index.php">Home</a> <span class="me-2 ms-2">/</span> Checkout</h6>
+					<h6 class="d-inline-block  font_14 col_yell bg-white"><a class="col_light" href="index.php">Home</a>
+						<span class="me-2 ms-2">/</span> Checkout
+					</h6>
 				</div>
 			</div>
 		</div>
@@ -41,7 +120,7 @@ if (!isset($_SESSION['useremail'])) {
 
 	<section id="checkout">
 		<div class="container-xl">
-			<div class="checkout_1 row">
+			<form class="checkout_1 row" method="post">
 				<div class="col-md-8">
 					<div class="checkout_1l">
 						<h5>Make Your Checkout Here</h5>
@@ -50,49 +129,43 @@ if (!isset($_SESSION['useremail'])) {
 					<div class="checkout_1l1 row">
 						<div class="col-md-6 ps-0">
 							<h6 class="font_13 fw-bold"> Name <span>*</span></h6>
-							<input class="form-control" type="text" required>
+							<input class="form-control" type="text" required name="name">
 						</div>
 						<div class="col-md-6 ps-0">
-							<h6 class="font_13 fw-bold"> Addres <span>*</span></h6>
-							<input class="form-control" type="text" required>
+							<h6 class="font_13 fw-bold"> Address <span>*</span></h6>
+							<input class="form-control" type="text" required name="address">
 						</div>
 					</div>
 					<div class="checkout_1l1 row">
 						<div class="col-md-6 ps-0">
-							<h6 class="font_13 fw-bold">Email Address <span>*</span></h6>
-							<input class="form-control" type="text" required>
+							<h6 class="font_13 fw-bold">Email <span>*</span></h6>
+							<input class="form-control" type="email" required name="email">
 						</div>
 						<div class="col-md-6 ps-0">
 							<h6 class="font_13 fw-bold">Work Phone No. <span>*</span></h6>
-							<input class="form-control" type="text" required>
+							<input class="form-control" type="number" required name="workno">
 						</div>
 					</div>
 					<div class="checkout_1l1 row">
 						<div class="col-md-6 ps-0">
 							<h6 class="font_13 fw-bold">Cell No. <span>*</span></h6>
-							<input class="form-control" type="text" required>
+							<input class="form-control" type="number" required name="cellno">
 						</div>
 						<div class="col-md-6 ps-0">
 							<h6 class="font_13 fw-bold">Date Of Birth <span>*</span></h6>
-							<input class="form-control" type="text" required>
-						</div>
-					</div>
-					<div class="checkout_1l1 row">
-						<div class="col-md-6 ps-0">
-							<h6 class="font_13 fw-bold"> <span></span></h6>
-							<input class="form-control" type="hidden">
+							<input class="form-control" type="text" required name="dob">
 						</div>
 					</div>
 					<div class="checkout_1l1 row">
 						<div class="col-md-12 ps-0">
 							<h6 class="font_13 fw-bold">Remarks <span>*(optional)</span></h6>
-							<textarea name="" class="form-control" cols="30" rows="10"></textarea>
+							<textarea name="remarks" class="form-control" cols="30" rows="10"></textarea>
 						</div>
 					</div>
 					<div class="checkout_1l">
-						<div class="form-check">
-							<input type="checkbox" class="form-check-input" id="customCheck1">
-							<label class="form-check-label" for="customCheck1"><a href="#">Create an account?</a></label>
+						<div class="form-check p-0">
+							<label class="form-check-label" for="customCheck1"><a href="signup.php">Create an
+									account?</a></label>
 						</div>
 					</div>
 				</div>
@@ -114,8 +187,12 @@ if (!isset($_SESSION['useremail'])) {
 								while ($fetch_cart = mysqli_fetch_array($result)) {
 							?>
 									<tr>
-										<td><?php echo $fetch_cart['name'] ?></td>
-										<td class="text-center"><?php echo $fetch_cart['quantity'] ?></td>
+										<td>
+											<?php echo $fetch_cart['name'] ?>
+										</td>
+										<td class="text-center">
+											<?php echo $fetch_cart['quantity'] ?>
+										</td>
 									</tr>
 							<?php
 								}
@@ -137,14 +214,21 @@ if (!isset($_SESSION['useremail'])) {
 						}
 
 						?>
-						<h6 class="fw-bold font_13">Sub Total <span class="pull-right">Rs. <?php echo $total ?></span></h6>
-						<h6 class="fw-bold mt-3 font_13">(+) Shipping <span class="pull-right">Rs. <?php echo $shipping; ?></span></h6>
+						<h6 class="fw-bold font_13">Sub Total <span class="pull-right">Rs.
+								<?php echo $total ?>
+							</span></h6>
+						<h6 class="fw-bold mt-3 font_13">(+) Shipping <span class="pull-right">Rs.
+								<?php echo $shipping; ?>
+							</span></h6>
 						<hr>
-						<h6 class="fw-bold font_13">Total <span class="pull-right">Rs. <?php echo $total + $shipping ?></span></h6><br>
-						<h6 class="mt-3"><a class="button" href="#">PLACE OREDER</a></h6>
+						<h6 class="fw-bold font_13">Total <span class="pull-right">Rs.
+								<?php echo $total + $shipping ?>
+							</span></h6><br>
+						<button class="mt-3 button border-0 w-100" type="submit" name="checkout-btn">PLACE
+							OREDER</button>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</section>
 

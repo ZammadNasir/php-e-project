@@ -57,13 +57,6 @@ if (!isset($_SESSION['username'])) {
                 <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                 <a href="addproduct.php" class="nav-item nav-link"><i class="fa fa-plus me-2"></i>Add Product</a>
                 <a href="products.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Products</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Categories</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="#" class="dropdown-item">Cosmetics</a>
-                        <a href="#" class="dropdown-item">Imitation jewelry</a>
-                    </div>
-                </div>
                 <a href="#" class="nav-item nav-link"><i class="fa fa-envelope me-2"></i>Messages</a>
                 <a href="users.html" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Users</a>
 
