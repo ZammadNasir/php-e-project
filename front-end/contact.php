@@ -1,5 +1,17 @@
 <?php
 include('./includes/config.php');
+if (isset($_POST['msg-btn'])) {
+	$fname = $_POST['fname'];
+	$lname = $_POST['lname'];
+	$email = $_POST['email'];
+	$phone = $_POST['phone'];
+	$msg = $_POST['msg'];
+
+	$insert = "insert into messages (firstname, lastname, email, phone, message)
+	values ('$fname', '$lname', '$email', $phone, '$msg')";
+
+	mysqli_query($connection, $insert);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +20,7 @@ include('./includes/config.php');
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Eco Mart</title>
+	<title>Eco Mart | Contact</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/global.css" rel="stylesheet">
@@ -74,12 +86,12 @@ include('./includes/config.php');
 			</div>
 			<div class="row contact_o1">
 				<div class="col-md-6">
-					<div class="contact_o1l">
+					<form class="contact_o1l" method="post">
 						<div class="contact_o1li row">
 							<div class="col-md-6">
 								<div class="contact_o1lil">
 									<div class="input-group p-2 bg_light">
-										<input type="text" class="form-control border-0 bg-transparent" placeholder="First Name*">
+										<input type="text" class="form-control border-0 bg-transparent" placeholder="First Name*" name="fname">
 										<span class="input-group-btn">
 											<button class="btn btn-primary bg-transparent border-0 fs-6" type="button">
 												<i class="fa fa-user col_light"></i> </button>
@@ -90,7 +102,7 @@ include('./includes/config.php');
 							<div class="col-md-6">
 								<div class="contact_o1lil">
 									<div class="input-group p-2 bg_light">
-										<input type="text" class="form-control border-0 bg-transparent" placeholder="Last Name*">
+										<input type="text" class="form-control border-0 bg-transparent" placeholder="Last Name*" name="lname">
 										<span class="input-group-btn">
 											<button class="btn btn-primary bg-transparent border-0 fs-6" type="button">
 												<i class="fa fa-user col_light"></i> </button>
@@ -103,7 +115,7 @@ include('./includes/config.php');
 							<div class="col-md-6">
 								<div class="contact_o1lil">
 									<div class="input-group p-2 bg_light">
-										<input type="text" class="form-control border-0 bg-transparent" placeholder="Your Email*">
+										<input type="email" class="form-control border-0 bg-transparent" placeholder="Your Email*" name="email">
 										<span class="input-group-btn">
 											<button class="btn btn-primary bg-transparent border-0 fs-6" type="button">
 												<i class="fa fa-envelope col_light"></i> </button>
@@ -114,7 +126,7 @@ include('./includes/config.php');
 							<div class="col-md-6">
 								<div class="contact_o1lil">
 									<div class="input-group p-2 bg_light">
-										<input type="text" class="form-control border-0 bg-transparent" placeholder="Phone*">
+										<input type="number" class="form-control border-0 bg-transparent" placeholder="Phone*" name="phone">
 										<span class="input-group-btn">
 											<button class="btn btn-primary bg-transparent border-0 fs-6" type="button">
 												<i class="fa fa-phone col_light"></i> </button>
@@ -126,13 +138,13 @@ include('./includes/config.php');
 						<div class="contact_o1li row mt-3">
 							<div class="col-md-12">
 								<div class="contact_o1lil">
-									<textarea placeholder="Enter Your Message" class="form-control bg_light border-0 form_area"></textarea>
-									<h6 class="mb-0 mt-4"><a class="button" href="#">SUBMIT</a></h6>
+									<textarea placeholder="Enter Your Message" class="form-control bg_light border-0 form_area" name="msg"></textarea>
+									<button class="mb-0 mt-4 button border-0" name="msg-btn">SUBMIT</button>
 								</div>
 							</div>
 
 						</div>
-					</div>
+					</form>
 				</div>
 				<div class="col-md-6">
 					<div class="contact_o1r">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2023 at 10:44 PM
+-- Generation Time: Oct 23, 2023 at 10:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -83,6 +83,29 @@ INSERT INTO `customers` (`customer_id`, `name`, `address`, `email`, `number`, `p
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` int(20) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `messagetime` time DEFAULT curtime()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`firstname`, `lastname`, `email`, `phone`, `message`, `messagetime`) VALUES
+('amir', 'ali', 'amir@gmail.com', 123431567, 'this is message ifs for testing purpose', '01:05:46'),
+('babar', 'azam', 'babar@gmail.com', 2147483647, 'this message is from babar azam', '01:15:29');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -101,6 +124,13 @@ CREATE TABLE `orders` (
   `TotalPrice` int(255) DEFAULT NULL,
   `OrderTime` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`Name`, `Address`, `Email`, `WorkPhoneNo`, `CellNo`, `DateOfBirth`, `Remarks`, `orderId`, `ProductId`, `CustomerId`, `TotalProducts`, `TotalPrice`, `OrderTime`) VALUES
+('cas', 'sdasd', 'sadasd@sdasd', 2312312, 12312312, 'axsdafs', 'sdasdasascc f f asf adfs', 38, 85, 1, '85) Moisturizing Cream(2)', 6400, '2023-10-23 19:33:47');
 
 -- --------------------------------------------------------
 
@@ -171,7 +201,44 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_
 (48, 'Ornate marquise earrings', 5400, 'earrings8.jpg', 6),
 (49, 'Pearl stud earrings', 6500, 'earrings9.jpg', 6),
 (50, 'Fern post earrings', 2300, 'earrings11.jpg', 6),
-(51, 'Spikey drop earrings', 7000, 'earrings7.jpg', 6);
+(51, 'Spikey drop earrings', 7000, 'earrings7.jpg', 6),
+(52, 'Dark Temptation', 1500, 'perfume1.jpg', 5),
+(53, 'Mystic Noir', 1500, 'perfume2.jpg', 5),
+(54, 'Fresh Breeze', 1500, 'perfume3.jpg', 5),
+(55, 'Velvet Musk', 1500, 'perfume4.jpg', 5),
+(56, 'Steel Essence', 1500, 'perfume5.jpg', 5),
+(57, 'Midnight Elixir', 1500, 'perfume6.jpg', 5),
+(58, 'Oceanic Drift', 1500, 'perfume7.jpg', 5),
+(59, 'Urban Legend', 1500, 'perfume8.jpg', 5),
+(60, 'Woodland Whispers', 1500, 'perfume9.jpg', 5),
+(61, 'Royal Blaze', 1500, 'perfume10.jpg', 5),
+(63, 'Foundation', 5000, 'makeup1.jpg', 1),
+(64, 'Lipstick', 3500, 'makeup2.jpg', 1),
+(65, 'Mascara', 2000, 'makeup3.jpg', 1),
+(66, 'Eyeshadow Palette', 7200, 'makeup4.jpg', 1),
+(67, 'Blush', 4500, 'makeup5.jpg', 1),
+(68, 'Concealer', 3900, 'makeup6.jpg', 1),
+(69, 'Eyeliner', 2800, 'makeup7.jpg', 1),
+(70, 'Floral Elegance', 5500, 'w-perfume1.jpg', 4),
+(71, 'Romantic Bloom', 4800, 'w-perfume2.jpg', 4),
+(72, 'Exquisite Orchid', 6700, 'w-perfume3.jpg', 4),
+(73, 'Velvet Petals', 4200, 'w-perfume4.jpg', 4),
+(74, 'Garden Fantasy', 5900, 'w-perfume5.jpg', 4),
+(75, 'Sensual Desires', 7300, 'w-perfume6.jpg', 4),
+(76, 'Enchanted Rose', 5100, 'w-perfume7.jpg', 4),
+(77, 'Glamourous Nights', 6200, 'w-perfume8.jpg', 4),
+(78, 'Hydrating Shampoo', 2500, 'haircare1.jpg', 3),
+(79, 'Repairing Conditioner', 2200, 'haircare2.jpg', 3),
+(80, 'Styling Gel', 1800, 'haircare3.jpg', 3),
+(81, 'Argan Oil Serum', 3200, 'haircare4.jpg', 3),
+(82, 'Curl Enhancing Cream', 2700, 'haircare5.jpg', 3),
+(83, 'Anti-Frizz Spray', 2000, 'haircare6.jpg', 3),
+(84, 'Volumizing Mousse', 2300, 'haircare7.jpg', 3),
+(85, 'Moisturizing Cream', 3200, 'skincare1.jpg', 2),
+(86, 'Cleansing Foam', 2400, 'skincare2.jpg', 2),
+(87, 'Serum', 2900, 'skincare3.jpg', 2),
+(88, 'Sunscreen Lotion', 2100, 'skincare4.jpg', 2),
+(89, 'Anti-Aging Eye Cream', 3500, 'skincare5.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -258,13 +325,13 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `product_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `product_categories`

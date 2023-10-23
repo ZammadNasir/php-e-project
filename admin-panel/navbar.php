@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>DASHBOARD</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- Favicon -->
@@ -37,7 +37,7 @@ if (!isset($_SESSION['username'])) {
 <body>
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-        <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+        <a href="dashborad.php" class="navbar-brand d-flex d-lg-none me-4">
             <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
         </a>
         <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -53,37 +53,39 @@ if (!isset($_SESSION['username'])) {
                     <span class="d-none d-lg-inline-flex">Message</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                    <a href="#" class="dropdown-item">
-                        <div class="d-flex align-items-center">
-                            <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <div class="ms-2">
-                                <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                <small>15 minutes ago</small>
-                            </div>
-                        </div>
-                    </a>
-                    <hr class="dropdown-divider">
-                    <a href="#" class="dropdown-item">
-                        <div class="d-flex align-items-center">
-                            <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <div class="ms-2">
-                                <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                <small>15 minutes ago</small>
-                            </div>
-                        </div>
-                    </a>
-                    <hr class="dropdown-divider">
-                    <a href="#" class="dropdown-item">
-                        <div class="d-flex align-items-center">
-                            <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <div class="ms-2">
-                                <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                <small>15 minutes ago</small>
-                            </div>
-                        </div>
-                    </a>
-                    <hr class="dropdown-divider">
-                    <a href="#" class="dropdown-item text-center">See all message</a>
+                    <?php
+                    $select = mysqli_query($connection, 'select * from messages limit 3');
+                    if (mysqli_num_rows($select) > 0) {
+                        while ($msg = mysqli_fetch_assoc($select)) {
+                    ?>
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0"><?php echo '<b>' . $msg['firstname'] . '</b>' ?> sent you a message</h6>
+                                        <?php
+                                        $timefromdb = strtotime($msg['messagetime']);
+                                        // Calculate the time difference
+                                        $currentTimestamp = time();
+                                        $timeDifference = $currentTimestamp - $timefromdb;
+
+                                        // Format and display the time difference
+                                        $hours = floor($timeDifference / 3600);
+                                        $minutes = floor(($timeDifference % 3600) / 60);
+                                        $seconds = $timeDifference % 60;
+                                        echo "<small> $hours hours ago </small>";
+                                        ?>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+
+                    <?php
+
+                        }
+                    }
+                    ?>
+
+                    <a href="./messages.php" class="dropdown-item text-center">See all message</a>
                 </div>
             </div>
             <div class="nav-item dropdown">

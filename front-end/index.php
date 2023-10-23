@@ -33,7 +33,7 @@ include('./includes/config.php');
 			</div>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="..." height="600">
+					<img src="img/slider1.jpeg" class="d-block w-100" alt="..." height="600">
 					<div class="carousel-caption d-md-block">
 						<h1 class="text-white fw-normal font_50 text-uppercase">Top Deal Today ! <br> <span class="fw-bold">Cosmetics</span></h1>
 						<p class="fs-6 mt-4">Get up to <span class="col_yell fw-bold">50%</span> off Today Only</p>
@@ -41,7 +41,7 @@ include('./includes/config.php');
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="https://images.unsplash.com/photo-1592317295760-5c1f677dfc78?auto=format&fit=crop&q=80&w=1615&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="..." height="600">
+					<img src="img/slider2.jpeg" class="d-block w-100" alt="..." height="600">
 					<div class="carousel-caption d-md-block">
 						<h1 class="text-white fw-normal font_50 text-uppercase">Top Deal Today ! <br> <span class="fw-bold">Jewelry</span></h1>
 						<p class="fs-6 mt-4">Get up to <span class="col_yell fw-bold">50%</span> off Today Only</p>
@@ -49,7 +49,7 @@ include('./includes/config.php');
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="https://images.unsplash.com/photo-1588444968576-f8fe92ce56fd?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="..." height="600">
+					<img src="img/slider3.jpeg" class="d-block w-100" alt="..." height="600">
 					<div class="carousel-caption d-md-block">
 						<h1 class="text-white fw-normal font_50 text-uppercase">Best! <br> <span class="fw-bold">Necklace</span></h1>
 						<p class="fs-6 mt-4">Get up to <span class="col_yell fw-bold">50%</span> off Today Only</p>
@@ -149,7 +149,7 @@ include('./includes/config.php');
 						<div class="clearfix deal_1li">
 							<div class="grid clearfix">
 								<figure class="effect-jazz mb-0">
-									<a href="#"><img src="https://plus.unsplash.com/premium_photo-1674748385760-d846825598ab?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" height="584" class="w-100" alt="abc"></a>
+									<a href="#"><img src="img/sidepic.jpeg" height="584" class="w-100" alt="abc"></a>
 								</figure>
 							</div>
 						</div>
@@ -322,7 +322,7 @@ include('./includes/config.php');
 			<div class="arrive row mt-4 me-0 ms-0 position-relative">
 				<div class="arrive_m text-center col-md-12">
 					<div class="position-absolute" style="inset: 0;">
-						<img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" width="100%" height="100%">
+						<img src="img/slider1.jpeg" alt="" width="100%" height="100%">
 					</div>
 					<h6 class="text-uppercase bg_blue ps-3 pe-3 pt-2 pb-2 d-inline-block text-white font_13">New Arrival
 					</h6>

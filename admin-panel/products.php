@@ -107,7 +107,7 @@ if (isset($_POST['update-product'])) {
                                 <tr>
 
                                     <?php
-                                    $selectproduct = "select * from products";
+                                    $selectproduct = "select * from products order by product_name";
                                     $selectresult = mysqli_query($connection, $selectproduct);
                                     if (mysqli_num_rows($selectresult) > 0) {
                                         while ($rows = mysqli_fetch_array($selectresult)) {

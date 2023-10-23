@@ -13,7 +13,7 @@ if (isset($_POST['signin'])) {
 
     if ($num == 1 && $email != '' && $password != '') {
         $_SESSION['username'] = $row['name'];
-        header('location:index.php');
+        header('location:dashborad.php');
     } else {
         $error[] = "Invalid email or address";
     }

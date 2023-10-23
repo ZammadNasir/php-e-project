@@ -32,7 +32,7 @@ if (isset($_POST['cart-btn'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Eco Mart</title>
+    <title>Eco Mart | Product</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/global.css" rel="stylesheet">
@@ -143,18 +143,6 @@ if (isset($_POST['cart-btn'])) {
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="prod_pg1r1r">
-                                    <select name="categories" style="height:50px;" class="form-select" required="" id="filter">
-                                        <option value="">Relevance</option>
-                                        <option>select</option>
-                                        <option>Name, A to Z</option>
-                                        <option>Name, Z to A</option>
-                                        <option>Price, high to low</option>
-                                        <option>Price, low to high</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="prod_pg1r2 mt-4 row">
@@ -205,21 +193,6 @@ if (isset($_POST['cart-btn'])) {
 
 
 
-                        </div>
-
-                        <div class="pages mt-4 row text-center bg_light ms-0 me-0 pt-4 pb-4">
-                            <div class="col-md-12">
-                                <ul class="mb-0">
-                                    <li><a href="detail.html"><i class="fa fa-chevron-left"></i></a></li>
-                                    <li class="act"><a href="detail.html">1</a></li>
-                                    <li><a href="detail.html">2</a></li>
-                                    <li><a href="detail.html">3</a></li>
-                                    <li><a href="detail.html">4</a></li>
-                                    <li><a href="detail.html">5</a></li>
-                                    <li><a href="detail.html">6</a></li>
-                                    <li><a href="detail.html"><i class="fa fa-chevron-right"></i></a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>

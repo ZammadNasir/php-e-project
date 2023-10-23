@@ -56,6 +56,8 @@ if (isset($_POST['checkout-btn'])) {
 		</div>
 	</div>";
 	}
+	$delete_cart = "delete from cart";
+	mysqli_query($connection, $delete_cart);
 }
 
 ?>

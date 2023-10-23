@@ -29,23 +29,17 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="../front-end/index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About </a>
+                        <a class="nav-link" href="../front-end/about.php">About </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Product
-                        </a>
-                        <ul class="dropdown-menu drop_2 drop_cat" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="product.html"><i class="fa fa-caret-right me-1 col_yell"></i> Product</a></li>
-                            <li><a class="dropdown-item border-0" href="detail.html"><i class="fa fa-caret-right me-1 col_yell"></i> Product Detail</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../front-end/shop.php">Shop</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
+                        <a class="nav-link" href="../front-end/contact.php">Contact</a>
                     </li>
 
                 </ul>

@@ -33,29 +33,28 @@
                     <p class="mt-3">Namkand sodales vel online best prices Amazon Check out ethnic wear, formal wear
                         western wear Blood Pressure Rate Monito.</p>
                     <ul class="social-network social-circle mb-0 mt-3">
-                        <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-skype"></i></a></li>
-                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="www.skype.com" class="icoRss" title="Rss"><i class="fa fa-skype"></i></a></li>
+                        <li><a href="www.facebook.com" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="www.twitter.com" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="www.pinterest.com" class="icoGoogle" title="Google +"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="www.linkedin.com" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="footer_1i">
-                    <h5 class="fs-6 mb-4">CUSTOMER SERVICE</h5>
+                    <h5 class="fs-6 mb-4">QUICK LINKS</h5>
                     <div class="row">
-                        <h6 class="font_14 fw-normal mb-3 col-md-12 col-6"><a href="#">Help Center</a></h6>
-                        <h6 class="font_14 fw-normal mb-3 col-md-12 col-6"><a href="#">Returns</a></h6>
-                        <h6 class="font_14 fw-normal mb-3 col-md-12 col-6"><a href="#">Product Recalls</a></h6>
-                        <h6 class="font_14 fw-normal mb-3 col-md-12 col-6"><a href="#">Accessibility</a></h6>
-                        <h6 class="font_14 fw-normal mb-0 col-md-12 col-6"><a href="#">Contact Us</a></h6>
+                        <h6 class="font_14 fw-normal mb-3 col-md-12 col-6"><a href="../front-end/index.php">Home</a></h6>
+                        <h6 class="font_14 fw-normal mb-3 col-md-12 col-6"><a href="../front-end/about.php">About</a></h6>
+                        <h6 class="font_14 fw-normal mb-3 col-md-12 col-6"><a href="../front-end/shop.php">Shop</a></h6>
+                        <h6 class="font_14 fw-normal mb-3 col-md-12 col-6"><a href="../front-end/contact.php">Contact Us</a></h6>
                     </div>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="footer_1i">
-                    <h5 class="fs-6 mb-4">QUICK LINKS</h5>
+                    <h5 class="fs-6 mb-4">CUSTOMER SERVICE</h5>
                     <div class="row">
                         <h6 class="font_14 fw-normal mb-3 col-md-12 col-6"><a href="#">Return Policy</a></h6>
                         <h6 class="font_14 fw-normal mb-3 col-md-12 col-6"><a href="#">Terms Of Use</a></h6>
