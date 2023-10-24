@@ -12,6 +12,7 @@ if (isset($_GET['delete'])) {
     } else {
         $message[] = 'Product could not be deleted';
     }
+    header('location: products.php');
 }
 
 
@@ -33,6 +34,7 @@ if (isset($_POST['update-product'])) {
     } else {
         $message[] = "product could not updated";
     }
+    header('location: products.php');
 }
 ?>
 <!DOCTYPE html>
@@ -68,7 +70,7 @@ if (isset($_POST['update-product'])) {
     <?php
     if (isset($message)) {
         foreach ($message as $message) {
-            echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'> $message <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+            echo "<div class='alert alert-warning bg-warning alert-dismissible fade show' role='alert'> $message <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
         }
     }
     ?>
@@ -117,7 +119,7 @@ if (isset($_POST['update-product'])) {
                                             <td><?php echo $rows['product_id'] ?></td>
                                             <td><?php echo $rows['product_name'] ?></td>
                                             <td><?php echo $rows['product_price'] ?></td>
-                                            <td><img class="img-fluid" src="uploadimg/<?php echo $rows['product_image'] ?>" width="40"></td>
+                                            <td><img class="img-fluid" src="../front-end/uploadimg/<?php echo $rows['product_image'] ?>" width="40"></td>
                                             <?php
                                             $select = "select category_name from product_categories where category_id = $category_id";
                                             $category = mysqli_query($connection, $select);
@@ -188,16 +190,13 @@ if (isset($_POST['update-product'])) {
                                                         ?>
                                                     </select>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary" class="update-btn" name="update-product">Add Product</button>
+                                                <button type="submit" class="btn btn-primary" class="update-btn" name="update-product">Edit Product</button>
                                                 <button type="reset" class="btn btn-danger modal-close">Close</button>
                                             </form>
                                 <?php
                                         }
                                     }
                                     echo "<script>document.querySelector('.update-form').style.display = 'block'
-                                    document.querySelector('.update-btn').addEventListener('click', ()=>{
-                                        document.querySelector('.update-form').style.display = 'none'
-                                    })
                                     </script>";
                                 }
 

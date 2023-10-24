@@ -68,7 +68,7 @@ if (isset($_POST['cart-btn'])) {
 							if (mysqli_num_rows($product) > 0) {
 								while ($row = mysqli_fetch_assoc($product)) {
 						?>
-									<img src="../admin-panel/uploadimg/<?php echo $row['product_image'] ?>" class="d-block w-75" alt="<?php echo $row['product_name'] ?>">
+									<img src="../front-end/uploadimg/<?php echo $row['product_image'] ?>" class="d-block w-75" alt="<?php echo $row['product_name'] ?>">
 						<?php
 								}
 							}
@@ -144,7 +144,7 @@ if (isset($_POST['cart-btn'])) {
 											<div class="prod_2i1 clearfix">
 												<div class="grid clearfix">
 													<figure class="effect-jazz mb-0">
-														<a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../admin-panel/uploadimg/<?php echo $row['product_image'] ?>" class="w-100" alt="abc"></a>
+														<a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../front-end/uploadimg/<?php echo $row['product_image'] ?>" class="w-100" alt="abc"></a>
 													</figure>
 												</div>
 											</div>

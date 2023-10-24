@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2023 at 10:40 PM
+-- Generation Time: Oct 24, 2023 at 10:36 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,7 +41,7 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`admin_id`, `name`, `email`, `password`, `created_at`) VALUES
 (8, 'random', 'random@gmail.com', '123', '2023-10-08 20:04:07'),
-(9, 'ik', 'ik@gmail.com', '987', '2023-10-09 19:04:45');
+(10, 'zammad', 'zammad@gmail.com', 'zammad123', '2023-10-24 15:31:30');
 
 -- --------------------------------------------------------
 
@@ -77,8 +77,32 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`customer_id`, `name`, `address`, `email`, `number`, `password`) VALUES
-(1, 'asad', '', 'asad@gmail.com', -1234, 'asad123'),
-(2, 'fahad', '', 'fahad@gmail.com', 123908123, 'fahad123');
+(1, 'asad', 'Gulshan', 'asad@gmail.com', -1234, 'asad123'),
+(2, 'fahad', 'Nazimabad', 'fahad@gmail.com', 123908123, 'fahad123'),
+(3, 'zammad', 'N.karachi', 'zammad@gmail.com', 2147483647, 'zammad123'),
+(4, 'John Doe', '123 Main St', 'john.doe@example.com', 1234567890, 'john123'),
+(5, 'Alice Smith', '456 Elm St', 'alice.smith@example.com', 2147483647, 'alice123'),
+(6, 'Bob Johnson', '789 Oak St', 'bob.johnson@example.com', 2147483647, 'bob123'),
+(7, 'Eva Williams', '101 Pine St', 'eva.williams@example.com', 2147483647, 'eva123'),
+(8, 'David Brown', '202 Cedar St', 'david.brown@example.com', 2147483647, 'david123'),
+(9, 'Sarah Davis', '303 Birch St', 'sarah.davis@example.com', 2147483647, 'sarah123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `date`
+--
+
+CREATE TABLE `date` (
+  `datecol` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `date`
+--
+
+INSERT INTO `date` (`datecol`) VALUES
+('2007-02-11');
 
 -- --------------------------------------------------------
 
@@ -115,7 +139,7 @@ CREATE TABLE `orders` (
   `Email` varchar(255) DEFAULT NULL,
   `WorkPhoneNo` int(255) DEFAULT NULL,
   `CellNo` int(255) DEFAULT NULL,
-  `DateOfBirth` varchar(255) DEFAULT NULL,
+  `DateOfBirth` date NOT NULL,
   `Remarks` varchar(255) DEFAULT NULL,
   `orderId` int(11) NOT NULL,
   `ProductId` int(11) DEFAULT NULL,
@@ -130,7 +154,14 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`Name`, `Address`, `Email`, `WorkPhoneNo`, `CellNo`, `DateOfBirth`, `Remarks`, `orderId`, `ProductId`, `CustomerId`, `TotalProducts`, `TotalPrice`, `OrderTime`) VALUES
-('cas', 'sdasd', 'sadasd@sdasd', 2312312, 12312312, 'axsdafs', 'sdasdasascc f f asf adfs', 38, 85, 1, '85) Moisturizing Cream(2)', 6400, '2023-10-23 19:33:47');
+('John Doe', '123 Main St', 'john.doe@example.com', 1234567890, 789712936, '2004-11-11', 'products were really good', 46, NULL, 4, '85) Moisturizing Cream(1)', 3200, '2023-10-24 14:04:21'),
+('John Doe', '123 Main St', 'john.doe@example.com', 1234567890, 789712936, '2004-11-11', 'second time shopping great experience', 47, NULL, 4, '2) Ring two Tone your side(2)', 2400, '2023-10-24 14:18:38'),
+('Sarah Davis', '303 Birch St', 'sarah.davis@example.com', 2147483647, 123432567, '2001-02-03', 'really good', 48, NULL, 9, '85) Moisturizing Cream(1) | 64) Lipstick(1)', 6700, '2023-10-24 14:22:30'),
+('Sarah Davis', '303 Birch St', 'sarah.davis@example.com', 2147483647, 123432567, '2001-02-03', 'Happy customer', 49, NULL, 9, '32) Oval drop set(1)', 1200, '2023-10-24 14:28:25'),
+('Eva Williams', '101 Pine St', 'eva.williams@example.com', 2147483647, 123123534, '2000-10-18', 'good products', 50, NULL, 7, '2) Ring two Tone your side(2)', 2400, '2023-10-24 15:50:14'),
+('Alice Smith', '456 Elm St', 'alice.smith@example.com', 2147483647, 87691273, '2006-10-12', 'really good', 51, NULL, 5, '52) Dark Temptation(1)', 1500, '2023-10-24 20:13:41'),
+('David Brown', '202 Cedar St', 'david.brown@example.com', 2147483647, 98731279, '1994-10-07', '', 52, NULL, 8, '15) Heavy silver chain bracelet(1)', 4500, '2023-10-24 20:18:48'),
+('David Brown', '202 Cedar St', 'david.brown@example.com', 2147483647, 98731279, '1994-10-07', '', 53, NULL, 8, '57) Midnight Elixir(1)', 1750, '2023-10-24 20:20:59');
 
 -- --------------------------------------------------------
 
@@ -313,25 +344,25 @@ ALTER TABLE `product_categories`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `admin_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `customer_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `product_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `product_categories`

@@ -39,7 +39,7 @@ if (!isset($_SESSION['username'])) {
     <!-- Sidebar Start -->
     <div class="sidebar pe-4 pb-3">
         <nav class="navbar bg-light navbar-light">
-            <a href="dashborad.php" class="navbar-brand mx-4 mb-3">
+            <a href="dashborad.php" class="navbar-brand mx-3 mb-3">
                 <h3 class="text-primary">Dashboard</h3>
             </a>
             <div class="d-flex align-items-center mb-4">
@@ -54,7 +54,7 @@ if (!isset($_SESSION['username'])) {
                 <a href="products.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Products</a>
                 <a href="./messages.php" class="nav-item nav-link"><i class="fa fa-envelope me-2"></i>Messages</a>
                 <a href="users.php" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Users</a>
-
+                <a href="./topcustomers.php" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Top Customers</a>
             </div>
         </nav>
     </div>
@@ -67,19 +67,6 @@ if (!isset($_SESSION['username'])) {
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
-        // const liElements = document.querySelectorAll(".nav-item");
-
-        // liElements.forEach((li, index) => {
-        //     li.addEventListener("click", () => {
-        //         liElements.forEach((li, i) => {
-        //             if (i === index) {
-        //                 li.classList.add("active");
-        //             } else {
-        //                 li.classList.remove("active");
-        //             }
-        //         });
-        //     });
-        // });
     </script>
 </body>
 

@@ -8,7 +8,7 @@ if (isset($_POST['add-product'])) {
     if (isset($_FILES['product-image']) && $_FILES['product-image']['error'] === UPLOAD_ERR_OK) {
         $product_image = $_FILES['product-image']['name'];
 
-        move_uploaded_file($_FILES['product-image']['tmp_name'], 'uploadimg/' . $product_image);
+        move_uploaded_file($_FILES['product-image']['tmp_name'], '../front-end/uploadimg/' . $product_image);
     }
     $insertproduct = "insert into products (product_name, product_price, product_image, product_category)
         values ('$product_name', $product_price, '$product_image', $product_category)";

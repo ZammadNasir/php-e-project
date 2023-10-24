@@ -21,12 +21,15 @@ include('config.php');
                         $email = $_SESSION['useremail'];
                         $select_name = mysqli_query($connection, "select * from customers where email = '$email'");
                         if (mysqli_num_rows($select_name) > 0) {
-                            $data = mysqli_fetch_assoc($select_name);
-                            $name = $data['name'];
-                            echo "<p class='my-0'><i class='fa fa-user mx-2'></i> $name </p>";
+                            while ($data = mysqli_fetch_assoc($select_name)) {
+
+                                $name = $data['name'];
+                                echo "<p class='my-0'><i class='fa fa-user mx-2'></i> $name </p>";
+                            }
                         }
                     }
                     ?>
+
                 </div>
                 <div class="col-md-4">
                     <div class="top_1i text-end">

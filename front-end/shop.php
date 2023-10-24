@@ -160,7 +160,7 @@ if (isset($_POST['cart-btn'])) {
                                                     <div class="prod_2i1 clearfix">
                                                         <div class="grid clearfix">
                                                             <figure class="effect-jazz mb-0">
-                                                                <a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../admin-panel/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
+                                                                <a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../front-end/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
                                                                 <input type="hidden" name="image" value="<?php echo $data['product_image'] ?>">
                                                             </figure>
                                                         </div>

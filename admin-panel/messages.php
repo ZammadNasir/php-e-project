@@ -49,12 +49,6 @@ session_start();
             <?php include('navbar.php') ?>
             <!-- Navbar End -->
 
-
-
-
-
-
-
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">

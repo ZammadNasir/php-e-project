@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['useremail'])) {
 	header('location: login.php');
 }
+$shipping = 250;
 $select_cart = mysqli_query($connection, "select * from cart");
 if (mysqli_num_rows($select_cart) < 1) {
 	header('location: cart.php');
@@ -37,6 +38,7 @@ if (isset($_POST['checkout-btn'])) {
 			$pattern = "/,/i";
 			$product_price =  preg_replace($pattern, "", $product_price);
 			$price_total += $product_price;
+			$price_total += $shipping;
 		}
 	}
 	$total_product = implode(' | ', $product_name);
@@ -52,7 +54,7 @@ if (isset($_POST['checkout-btn'])) {
 				<p>Your address : <span> $address</span></p>
 				<p>Your number : <span> $cellno</span></p>
 				<p>Your email : <span> $email</span></p>
-				<p>Your total : <span> $price_total</span></p>
+				<p>Your total : <span>Rs. $price_total</span></p>
 				<a href='../front-end/index.php' class='button mt-3'>Continue Shopping</a>
 			</div>
 		</div>

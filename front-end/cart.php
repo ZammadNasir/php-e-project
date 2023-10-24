@@ -80,7 +80,7 @@ if (isset($_POST['update'])) {
 								<div class="col-md-3 ps-0 col-3">
 									<input type="hidden" value="<?php echo $data['product_id'] ?>">
 									<div class="cart_3l1i">
-										<a href="#"><img src="../admin-panel/uploadimg/<?php echo $data['image'] ?>" alt="abc" class="w-100"></a>
+										<a href="#"><img src="../front-end/uploadimg/<?php echo $data['image'] ?>" alt="abc" class="w-100"></a>
 									</div>
 								</div>
 								<div class="col-md-9 col-9">

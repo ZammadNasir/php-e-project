@@ -99,8 +99,18 @@ session_start();
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Today Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Top Customer</p>
+                                <h6 class="mb-0">
+                                    <?php
+                                    $select = mysqli_query($connection, "SELECT *, COUNT(Name) AS numbers FROM orders GROUP BY Name ORDER BY numbers DESC LIMIT 1");
+                                    if (mysqli_num_rows($select) > 0) {
+                                        while ($user = mysqli_fetch_assoc($select)) {
+                                            $name = $user['Name'];
+                                            echo $name;
+                                        }
+                                    }
+                                    ?>
+                                </h6>
                             </div>
                         </div>
                     </div>
@@ -108,8 +118,19 @@ session_start();
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Top Seller</p>
+
+                                <h6 class="mb-0">
+                                    <?php
+                                    $select = mysqli_query($connection, "SELECT COUNT(TotalProducts), TotalProducts AS number from orders GROUP BY TotalProducts limit 1");
+                                    if (mysqli_num_rows($select) > 0) {
+                                        while ($user = mysqli_fetch_assoc($select)) {
+                                            $product = $user['number'];
+                                            echo $product;
+                                        }
+                                    }
+                                    ?>
+                                </h6>
                             </div>
                         </div>
                     </div>
@@ -128,7 +149,7 @@ session_start();
                         <a href="">Show All</a>
                     </div>
                     <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0 table-responsive" id="orders-table">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0 table-responsive" id="orders-tabl">
                             <thead>
                                 <tr class="text-dark">
                                     <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
@@ -143,7 +164,7 @@ session_start();
                             </thead>
                             <tbody>
                                 <?php
-                                $select_order = mysqli_query($connection, "select * from orders");
+                                $select_order = mysqli_query($connection, "select * from orders order by orderId desc");
                                 if (mysqli_num_rows($select_order) > 0) {
                                     while ($data = mysqli_fetch_array($select_order)) {
                                 ?>
@@ -151,7 +172,7 @@ session_start();
                                             <td><?php echo $data['Name'] ?></td>
                                             <td><?php echo $data['orderId'] ?></td>
                                             <td><?php echo $data['CustomerId'] ?></td>
-                                            <td class="product"><?php echo $data['TotalProducts'] ?></td>
+                                            <td><?php echo $data['TotalProducts'] ?></td>
                                             <td><?php echo $data['TotalPrice'] ?></td>
                                             <td><?php echo $data['OrderTime'] ?></td>
                                             <td><?php echo $data['Remarks'] ?></td>
