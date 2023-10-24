@@ -4,6 +4,10 @@ session_start();
 if (!isset($_SESSION['useremail'])) {
 	header('location: login.php');
 }
+$select_cart = mysqli_query($connection, "select * from cart");
+if (mysqli_num_rows($select_cart) < 1) {
+	header('location: cart.php');
+}
 $customer_id = 0;
 $customer_email = $_SESSION['useremail'];
 $select = "select * from customers where '$customer_email' = email";
@@ -118,120 +122,140 @@ if (isset($_POST['checkout-btn'])) {
 		</div>
 	</section>
 
-	<section id="checkout">
-		<div class="container-xl">
-			<form class="checkout_1 row" method="post">
+	<?php
+	if (isset($_SESSION['useremail'])) {
+		$useremail = $_SESSION['useremail'];
+		$select_email = mysqli_query($connection, "select * from customers where email = '$useremail'");
+		if (mysqli_num_rows($select_email) > 0) {
+			while ($data = mysqli_fetch_array($select_email)) {
+	?>
+				<section id="checkout">
+					<div class="container-xl">
+						<form class="checkout_1 row" method="post">
 
-				<div class="col-md-8">
-					<div class="checkout_1l">
-						<h5>Make Your Checkout Here</h5>
-						<p>Please register in order to checkout more quickly</p>
-					</div>
-					<div class="checkout_1l1 row">
-						<div class="col-md-6 ps-0">
-							<h6 class="font_13 fw-bold"> Name <span>*</span></h6>
-							<input class="form-control" type="text" required name="name">
-						</div>
-						<div class="col-md-6 ps-0">
-							<h6 class="font_13 fw-bold"> Address <span>*</span></h6>
-							<input class="form-control" type="text" required name="address">
-						</div>
-					</div>
-					<div class="checkout_1l1 row">
-						<div class="col-md-6 ps-0">
-							<h6 class="font_13 fw-bold">Email <span>*</span></h6>
-							<input class="form-control" type="email" required name="email">
-						</div>
-						<div class="col-md-6 ps-0">
-							<h6 class="font_13 fw-bold">Work Phone No. <span>*</span></h6>
-							<input class="form-control" type="number" required name="workno">
-						</div>
-					</div>
-					<div class="checkout_1l1 row">
-						<div class="col-md-6 ps-0">
-							<h6 class="font_13 fw-bold">Cell No. <span>*</span></h6>
-							<input class="form-control" type="number" required name="cellno">
-						</div>
-						<div class="col-md-6 ps-0">
-							<h6 class="font_13 fw-bold">Date Of Birth <span>*</span></h6>
-							<input class="form-control" type="date" required name="dob">
-						</div>
-					</div>
-					<div class="checkout_1l1 row">
-						<div class="col-md-12 ps-0">
-							<h6 class="font_13 fw-bold">Remarks <span>*(optional)</span></h6>
-							<textarea name="remarks" class="form-control" cols="30" rows="10"></textarea>
-						</div>
-					</div>
-					<div class="checkout_1l">
-						<div class="form-check p-0">
-							<label class="form-check-label" for="customCheck1"><a href="signup.php">Create an
-									account?</a></label>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="checkout_1r">
-						<h5>CART TOTALS</h5>
-						<hr class="line">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>Product</th>
-									<th>Quantity</th>
-								</tr>
-							</thead>
-							<?php
-							$select = "select * from cart";
-							$result = mysqli_query($connection, $select);
-							if (mysqli_num_rows($result)) {
-								while ($fetch_cart = mysqli_fetch_array($result)) {
-							?>
-									<tr>
-										<td>
-											<?php echo $fetch_cart['name'] ?>
-										</td>
-										<td class="text-center">
-											<?php echo $fetch_cart['quantity'] ?>
-										</td>
-									</tr>
-							<?php
-								}
-							}
-							?>
-						</table>
-						<?php
-						$select_cart = "select * from cart";
-						$result = mysqli_query($connection, $select_cart);
-						$total = 0;
-						$shipping = 250;
-						if (mysqli_num_rows($result) > 0) {
-							while ($fetch_cart = mysqli_fetch_assoc($result)) {
-								$total_price = number_format($fetch_cart['price'] * $fetch_cart['quantity']);
-								$pattern = "/,/i";
-								$total_price =  preg_replace($pattern, "", $total_price);
-								$total = $total + $total_price;
-							}
-						}
+							<div class="col-md-8">
+								<div class="checkout_1l">
+									<h5>Make Your Checkout Here</h5>
+									<p>Please register in order to checkout more quickly</p>
+								</div>
+								<div class="checkout_1l1 row">
+									<div class="col-md-6 ps-0">
+										<h6 class="font_13 fw-bold"> Name <span>*</span></h6>
+										<input class="form-control" type="text" required name="name" value="<?php echo $data['name'] ?>">
+									</div>
+									<div class="col-md-6 ps-0">
+										<h6 class="font_13 fw-bold"> Address <span>*</span></h6>
+										<input class="form-control" type="text" required name="address" value="<?php echo $data['address'] ?>">
+									</div>
+								</div>
+								<div class=" checkout_1l1 row">
+									<div class="col-md-6 ps-0">
+										<h6 class="font_13 fw-bold">Email <span>*</span></h6>
+										<input class="form-control" type="email" required name="email" value="<?php echo $data['email'] ?>">
+									</div>
+									<div class=" col-md-6 ps-0">
+										<h6 class="font_13 fw-bold">Work Phone No. <span>*</span></h6>
+										<input class="form-control" type="number" required name="workno" value="<?php echo $data['number'] ?>">
+									</div>
+								</div>
+								<div class=" checkout_1l1 row">
+									<div class="col-md-6 ps-0">
+										<?php
+										$select_dob = mysqli_query($connection, "select * from orders where email  = '$useremail'");
+										if (mysqli_num_rows($select_dob) > 0) {
+											$dob = mysqli_fetch_assoc($select_dob);
+										}
+										?>
+										<h6 class="font_13 fw-bold">Cell No. <span>*</span></h6>
+										<input class="form-control" type="number" required name="cellno" value="<?php echo $dob['CellNo'] ?>">
+									</div>
+									<div class="col-md-6 ps-0">
+										<h6 class="font_13 fw-bold">Date Of Birth <span>*</span></h6>
+										<input class="form-control" type="date" required name="dob" value="<?php echo $dob['DateOfBirth'] ?>">
+									</div>
+								</div>
+								<div class="checkout_1l1 row">
+									<div class="col-md-12 ps-0">
+										<h6 class="font_13 fw-bold">Remarks <span>*(optional)</span></h6>
+										<textarea name="remarks" class="form-control" cols="30" rows="10"></textarea>
+									</div>
+								</div>
+								<div class="checkout_1l">
+									<div class="form-check p-0">
+										<label class="form-check-label" for="customCheck1"><a href="signup.php">Create an
+												account?</a></label>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="checkout_1r">
+									<h5>CART TOTALS</h5>
+									<hr class="line">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Product</th>
+												<th>Quantity</th>
+											</tr>
+										</thead>
+										<?php
+										$select = "select * from cart";
+										$result = mysqli_query($connection, $select);
+										if (mysqli_num_rows($result)) {
+											while ($fetch_cart = mysqli_fetch_array($result)) {
+										?>
+												<tr>
+													<td>
+														<?php echo $fetch_cart['name'] ?>
+													</td>
+													<td class="text-center">
+														<?php echo $fetch_cart['quantity'] ?>
+													</td>
+												</tr>
+										<?php
+											}
+										}
+										?>
+									</table>
+									<?php
+									$select_cart = "select * from cart";
+									$result = mysqli_query($connection, $select_cart);
+									$total = 0;
+									$shipping = 250;
+									if (mysqli_num_rows($result) > 0) {
+										while ($fetch_cart = mysqli_fetch_assoc($result)) {
+											$total_price = number_format($fetch_cart['price'] * $fetch_cart['quantity']);
+											$pattern = "/,/i";
+											$total_price =  preg_replace($pattern, "", $total_price);
+											$total = $total + $total_price;
+										}
+									}
 
-						?>
-						<h6 class="fw-bold font_13">Sub Total <span class="pull-right">Rs.
-								<?php echo $total ?>
-							</span></h6>
-						<h6 class="fw-bold mt-3 font_13">(+) Shipping <span class="pull-right">Rs.
-								<?php echo $shipping; ?>
-							</span></h6>
-						<hr>
-						<h6 class="fw-bold font_13">Total <span class="pull-right">Rs.
-								<?php echo $total + $shipping ?>
-							</span></h6><br>
-						<button class="mt-3 button border-0 w-100" type="submit" name="checkout-btn">PLACE
-							OREDER</button>
+									?>
+									<h6 class="fw-bold font_13">Sub Total <span class="pull-right">Rs.
+											<?php echo $total ?>
+										</span></h6>
+									<h6 class="fw-bold mt-3 font_13">(+) Shipping <span class="pull-right">Rs.
+											<?php echo $shipping; ?>
+										</span></h6>
+									<hr>
+									<h6 class="fw-bold font_13">Total <span class="pull-right">Rs.
+											<?php echo $total + $shipping ?>
+										</span></h6><br>
+									<button class="mt-3 button border-0 w-100" type="submit" name="checkout-btn">PLACE
+										OREDER</button>
+								</div>
+							</div>
+						</form>
 					</div>
-				</div>
-			</form>
-		</div>
-	</section>
+				</section>
+	<?php
+			}
+		}
+	}
+	?>
+
+
 
 
 	<?php include('./includes/footer.php') ?>

@@ -9,7 +9,7 @@ if (isset($_POST['login_btn'])) {
     $select = "select * from customers where email = '$email' and password = '$password'";
     $res = mysqli_query($connection, $select);
     if (mysqli_num_rows($res) > 0) {
-        header('location: index.php');
+        header('location: checkout.php');
     } else {
         $message[] = "Invalid email or password";
     }
