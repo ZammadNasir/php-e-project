@@ -108,6 +108,13 @@ if (!isset($_SESSION['username'])) {
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        // Sidebar Toggler
+        $(".sidebar-toggler").click(function() {
+            $(".sidebar, .content").toggleClass("open");
+            return false;
+        });
+    </script>
 
 </body>
 

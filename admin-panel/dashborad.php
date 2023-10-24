@@ -133,13 +133,7 @@ session_start();
                                 <tr class="text-dark">
                                     <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
                                     <th scope="col">Name</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">WorkPhoneNo.</th>
-                                    <th scope="col">CellNo.</th>
-                                    <th scope="col">Date Of Birth</th>
                                     <th scope="col">Order Id</th>
-                                    <th scope="col">Product Id</th>
                                     <th scope="col">Customer Id</th>
                                     <th scope="col">Total Products</th>
                                     <th scope="col">Total Price</th>
@@ -155,15 +149,9 @@ session_start();
                                 ?>
                                         <tr>
                                             <td><?php echo $data['Name'] ?></td>
-                                            <td><?php echo $data['Address'] ?></td>
-                                            <td><?php echo $data['Email'] ?></td>
-                                            <td><?php echo $data['WorkPhoneNo'] ?></td>
-                                            <td><?php echo $data['CellNo'] ?></td>
-                                            <td><?php echo $data['DateOfBirth'] ?></td>
                                             <td><?php echo $data['orderId'] ?></td>
-                                            <td><?php echo $data['ProductId'] ?></td>
                                             <td><?php echo $data['CustomerId'] ?></td>
-                                            <td><?php echo $data['TotalProducts'] ?></td>
+                                            <td class="product"><?php echo $data['TotalProducts'] ?></td>
                                             <td><?php echo $data['TotalPrice'] ?></td>
                                             <td><?php echo $data['OrderTime'] ?></td>
                                             <td><?php echo $data['Remarks'] ?></td>
@@ -219,6 +207,15 @@ session_start();
     <script src="js/main.js"></script>
     <script>
         let table = new DataTable('#orders-table');
+
+        // Sample string with products
+        var productsString = document.querySelectorAll('.product');
+
+        // Replace pipes with <br> tags
+        var formattedProducts = productsString.forEach((item) => {
+            item.replace(/\|/g, '<br>')
+            console.log(item);
+        });
     </script>
 </body>
 

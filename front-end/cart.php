@@ -129,8 +129,6 @@ if (isset($_POST['update'])) {
 							<?php echo 'Rs. ' . $total ?>
 						</h5>
 						<hr>
-						<h6 class="font_13">Additional comments</h6>
-						<textarea class="form-control"></textarea>
 						<h6 class="text-center mt-3"><a class="button" href="checkout.php">PROCEED TO CHECKOUT</a></h6><br>
 					</div>
 				</div>

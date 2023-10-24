@@ -1,3 +1,6 @@
+<?php
+
+?>
 <section id="top">
     <div class="container-fluid">
         <div class="row top_1">
@@ -10,7 +13,8 @@
                             <a class="text-light" href="login.php"><i class="fa fa-sign-in col_yell me-1"></i> Sign In</a>
                         </li>
                         <li class="nav-item  d-inline-block font_13 border-0">
-                            <a class="text-light" href="logout.php" onclick="return confirm('are you sure you wanna logout?')"><i class="fa fa-user col_yell me-1"></i> Logout</a>
+                            <a class="text-light" href="logout.php" onclick="return confirm('are you sure you wanna logout?')"><i class="fa fa-user col_yell me-1"></i>
+                                Logout</a>
                         </li>
                     </ul>
                 </div>

@@ -28,7 +28,6 @@ if (isset($_POST['checkout-btn'])) {
 	if (mysqli_num_rows($cart_query) > 0) {
 		while ($product_item = mysqli_fetch_assoc($cart_query)) {
 			$product_name[] = $product_item['product_id'] . ') ' . $product_item['name'] . '(' . $product_item['quantity'] . ')';
-			$product_id[] =  $product_item['product_id'];
 
 			$product_price = number_format($product_item['price'] * $product_item['quantity']);
 			$pattern = "/,/i";
@@ -37,9 +36,8 @@ if (isset($_POST['checkout-btn'])) {
 		}
 	}
 	$total_product = implode(' | ', $product_name);
-	$total_ids = implode('|', $product_id);
-	$detail_query = mysqli_query($connection, "insert into orders (Name, Address, Email, WorkPhoneNo, CellNo, DateOfBirth, Remarks, ProductId, CustomerId, TotalProducts, TotalPrice)
-	values ( '$name', '$address', '$email', $workno, $cellno, '$dob', '$remarks', '$total_ids', $customer_id, '$total_product', $price_total)");
+	$detail_query = mysqli_query($connection, "insert into orders (Name, Address, Email, WorkPhoneNo, CellNo, DateOfBirth, Remarks, CustomerId, TotalProducts, TotalPrice)
+	values ( '$name', '$address', '$email', $workno, $cellno, '$dob', '$remarks', $customer_id, '$total_product', $price_total)");
 
 	if ($cart_query and $detail_query) {
 		echo "<div class='confirm-msg'>
@@ -123,6 +121,7 @@ if (isset($_POST['checkout-btn'])) {
 	<section id="checkout">
 		<div class="container-xl">
 			<form class="checkout_1 row" method="post">
+
 				<div class="col-md-8">
 					<div class="checkout_1l">
 						<h5>Make Your Checkout Here</h5>
@@ -155,7 +154,7 @@ if (isset($_POST['checkout-btn'])) {
 						</div>
 						<div class="col-md-6 ps-0">
 							<h6 class="font_13 fw-bold">Date Of Birth <span>*</span></h6>
-							<input class="form-control" type="text" required name="dob">
+							<input class="form-control" type="date" required name="dob">
 						</div>
 					</div>
 					<div class="checkout_1l1 row">

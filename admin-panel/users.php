@@ -66,26 +66,29 @@ session_start();
                         <table class="table text-start align-middle table-bordered table-hover mb-0 table-responsive" id="orders-table">
                             <thead>
                                 <tr class="text-dark">
-                                    <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
                                     <th scope="col">CustomerId</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Address</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Number</th>
+                                    <th scope="col">WorkPhoneNo.</th>
+                                    <th scope="col">CellNo.</th>
+                                    <th scope="col">DateOfBirth</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $select_users = mysqli_query($connection, "select * from customers");
+                                $select_users = mysqli_query($connection, "select * from orders");
                                 if (mysqli_num_rows($select_users) > 0) {
                                     while ($data = mysqli_fetch_array($select_users)) {
                                 ?>
                                         <tr>
-                                            <td><?php echo $data['customer_id'] ?></td>
-                                            <td><?php echo $data['name'] ?></td>
-                                            <td><?php echo $data['address'] ?></td>
-                                            <td><?php echo $data['email'] ?></td>
-                                            <td><?php echo $data['number'] ?></td>
+                                            <td><?php echo $data['CustomerId'] ?></td>
+                                            <td><?php echo $data['Name'] ?></td>
+                                            <td><?php echo $data['Address'] ?></td>
+                                            <td><?php echo $data['Email'] ?></td>
+                                            <td><?php echo $data['WorkPhoneNo'] ?></td>
+                                            <td><?php echo $data['CellNo'] ?></td>
+                                            <td><?php echo $data['DateOfBirth'] ?></td>
                                         </tr>
 
                                 <?php
