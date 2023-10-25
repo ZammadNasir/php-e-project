@@ -132,12 +132,15 @@ if (isset($_POST['cart-btn'])) {
                                     <p class="mt-3 mb-0">
                                         <?php
 
-                                        if (isset($_GET['category/'])) {
-                                            $category_name = $_GET['category/'];
-                                            $select = "SELECT * FROM products INNER JOIN product_categories ON product_category = category_id and category_name = '$category_name'";
-                                            $result = mysqli_query($connection, $select);
-                                            $product_count = mysqli_num_rows($result);
-                                            echo "Products found" . $product_count;
+                                        $product_search = $_GET['product_search'];
+                                        $select = "SELECT * FROM products WHERE product_name LIKE '%$product_search%'";
+                                        $result = mysqli_query($connection, $select);
+                                        if (mysqli_num_rows($result)) {
+                                            echo "Products found " . $product_count;
+                                        } else {
+                                            $select_category = mysqli_query($connection, "SELECT * FROM products INNER JOIN product_categories on product_category = category_id and category_name like '%$product_search%'");
+                                            $category_count = mysqli_num_rows($select_category);
+                                            echo "Products found " . $category_count;
                                         }
                                         ?>
                                     </p>
@@ -153,6 +156,7 @@ if (isset($_POST['cart-btn'])) {
                             $result = mysqli_query($connection, $select);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($data = mysqli_fetch_array($result)) {
+
                             ?>
                                     <form class="col-md-4 mt-4" method="post">
                                         <div class="prodinm clearfix">
@@ -183,10 +187,48 @@ if (isset($_POST['cart-btn'])) {
                                             </div>
                                         </div>
                                     </form>
-                            <?php
+                                    <?php
                                 }
                             } else {
-                                echo "<p>No products found</p>";
+                                $select = mysqli_query($connection, "SELECT * FROM products INNER JOIN product_categories on product_category = category_id and category_name like '%$product_search%'");
+                                if (mysqli_num_rows($select) > 0) {
+                                    while ($data = mysqli_fetch_array($select)) {
+                                    ?>
+                                        <form class="col-md-4 mt-4" method="post">
+                                            <div class="prodinm clearfix">
+                                                <input type="hidden" name="id" value="<?php echo $data['product_id'] ?>">
+                                                <input type="hidden" name="quantity" min="1" value="1" class="form-control mt-4" style="width: 140px; height:50px; margin-right:10px; float:left;">
+                                                <div class="prod_2im position-relative clearfix">
+                                                    <div class="prod_2i1 clearfix">
+                                                        <div class="grid clearfix">
+                                                            <figure class="effect-jazz mb-0">
+                                                                <a href="detail.php?product/=<?php echo $data['product_name'] ?>"><img src="../front-end/uploadimg/<?php echo $data['product_image'] ?>" class="w-100" alt="abc"></a>
+                                                                <input type="hidden" name="image" value="<?php echo $data['product_image'] ?>">
+                                                            </figure>
+                                                        </div>
+                                                    </div>
+                                                    <div class="prod_2in clearfix position-absolute bg-light w-100 p-3 text-center">
+                                                        <ul class="mb-0">
+                                                            <button class="d-inline-block border-0 me-3" type="submit" name="cart-btn"><i class="fa fa-shopping-cart"></i></button>
+                                                            <li class="d-inline-block"><a href="detail.php?product/=<?php echo $data['product_name'] ?>"><i class="fa fa-eye"></i></a></li>
+                                                            <input type="hidden" name="name" value="<?php echo $data['product_name'] ?>">
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="prod_2i2 pt-4 pb-4 ps-3 pe-3 bg-white clearfix">
+                                                    <h6 class="mt-2"><a href="detail.php?product/=<?php echo $data['product_name'] ?>"><?php echo $data['product_name'] ?></a></h6>
+                                                    <hr>
+                                                    <h6 class="fw-normal mb-0 col_yell fw-bold">Rs. <span class="pull-lef fw-bold col_yell price"><?php echo $data['product_price'] ?></span></h6>
+                                                    <input type="hidden" name="price" value="<?php echo $data['product_price'] ?>">
+                                                </div>
+                                            </div>
+                                        </form>
+                                <?php
+                                    }
+                                }
+                                ?>
+
+                            <?php
                             }
                             ?>
 

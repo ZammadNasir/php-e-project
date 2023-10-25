@@ -37,7 +37,7 @@ include('./includes/config.php');
 					<div class="carousel-caption d-md-block">
 						<h1 class="text-white fw-normal font_50 text-uppercase">Top Deal Today ! <br> <span class="fw-bold">Cosmetics</span></h1>
 						<p class="fs-6 mt-4">Get up to <span class="col_yell fw-bold">50%</span> off Today Only</p>
-						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="#">SHOP NOW</a></h6>
+						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="./shop.php">SHOP NOW</a></h6>
 					</div>
 				</div>
 				<div class="carousel-item">
