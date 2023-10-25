@@ -135,7 +135,8 @@ if (isset($_POST['cart-btn'])) {
                                         $product_search = $_GET['product_search'];
                                         $select = "SELECT * FROM products WHERE product_name LIKE '%$product_search%'";
                                         $result = mysqli_query($connection, $select);
-                                        if (mysqli_num_rows($result)) {
+                                        if (mysqli_num_rows($result) > 0) {
+                                            $product_count = mysqli_num_rows($result);
                                             echo "Products found " . $product_count;
                                         } else {
                                             $select_category = mysqli_query($connection, "SELECT * FROM products INNER JOIN product_categories on product_category = category_id and category_name like '%$product_search%'");

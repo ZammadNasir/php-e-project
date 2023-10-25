@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2023 at 10:36 PM
+-- Generation Time: Oct 25, 2023 at 12:56 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -56,6 +56,14 @@ CREATE TABLE `cart` (
   `price` varchar(255) NOT NULL,
   `quantity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`product_id`, `name`, `image`, `price`, `quantity`) VALUES
+(89, 'Anti-Aging Eye Cream', 'skincare5.jpg', '3500', 1),
+(70, 'Floral Elegance', 'w-perfume1.jpg', '5500', 1);
 
 -- --------------------------------------------------------
 
@@ -161,7 +169,8 @@ INSERT INTO `orders` (`Name`, `Address`, `Email`, `WorkPhoneNo`, `CellNo`, `Date
 ('Eva Williams', '101 Pine St', 'eva.williams@example.com', 2147483647, 123123534, '2000-10-18', 'good products', 50, NULL, 7, '2) Ring two Tone your side(2)', 2400, '2023-10-24 15:50:14'),
 ('Alice Smith', '456 Elm St', 'alice.smith@example.com', 2147483647, 87691273, '2006-10-12', 'really good', 51, NULL, 5, '52) Dark Temptation(1)', 1500, '2023-10-24 20:13:41'),
 ('David Brown', '202 Cedar St', 'david.brown@example.com', 2147483647, 98731279, '1994-10-07', '', 52, NULL, 8, '15) Heavy silver chain bracelet(1)', 4500, '2023-10-24 20:18:48'),
-('David Brown', '202 Cedar St', 'david.brown@example.com', 2147483647, 98731279, '1994-10-07', '', 53, NULL, 8, '57) Midnight Elixir(1)', 1750, '2023-10-24 20:20:59');
+('David Brown', '202 Cedar St', 'david.brown@example.com', 2147483647, 98731279, '1994-10-07', '', 53, NULL, 8, '57) Midnight Elixir(1)', 1750, '2023-10-24 20:20:59'),
+('John Doe', '123 Main St', 'john.doe@example.com', 1234567890, 789712936, '2004-11-11', 'good', 54, NULL, 4, '11) Classing thick band ring(1)', 6250, '2023-10-25 10:08:36');
 
 -- --------------------------------------------------------
 
@@ -356,7 +365,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `products`

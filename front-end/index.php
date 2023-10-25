@@ -9,6 +9,9 @@ include('./includes/config.php');
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Eco Mart</title>
+
+	<link rel="icon" type="image/x-icon" href="./uploadimg/fav-icon.png">
+
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/global.css" rel="stylesheet">
@@ -45,7 +48,7 @@ include('./includes/config.php');
 					<div class="carousel-caption d-md-block">
 						<h1 class="text-white fw-normal font_50 text-uppercase">Top Deal Today ! <br> <span class="fw-bold">Jewelry</span></h1>
 						<p class="fs-6 mt-4">Get up to <span class="col_yell fw-bold">50%</span> off Today Only</p>
-						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="#">SHOP NOW</a></h6>
+						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="./shop.php">SHOP NOW</a></h6>
 					</div>
 				</div>
 				<div class="carousel-item">
@@ -53,7 +56,7 @@ include('./includes/config.php');
 					<div class="carousel-caption d-md-block">
 						<h1 class="text-white fw-normal font_50 text-uppercase">Best! <br> <span class="fw-bold">Necklace</span></h1>
 						<p class="fs-6 mt-4">Get up to <span class="col_yell fw-bold">50%</span> off Today Only</p>
-						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="#">SHOP NOW</a></h6>
+						<h6 class="text-uppercase mt-4 mb-0"><a class="button" href="./shop.php">SHOP NOW</a></h6>
 					</div>
 				</div>
 			</div>
@@ -149,7 +152,7 @@ include('./includes/config.php');
 						<div class="clearfix deal_1li">
 							<div class="grid clearfix">
 								<figure class="effect-jazz mb-0">
-									<a href="#"><img src="img/sidepic.jpeg" height="584" class="w-100" alt="abc"></a>
+									<a href="./shop.php"><img src="img/sidepic.jpeg" height="584" class="w-100" alt="abc"></a>
 								</figure>
 							</div>
 						</div>
@@ -171,7 +174,7 @@ include('./includes/config.php');
 						</div>
 						<div class="row prod_2 text-center">
 							<?php
-							$select = "select * from products where product_category = 8 limit 4";
+							$select = "select * from products where product_category = 3 limit 4";
 							$result = mysqli_query($connection, $select);
 							if (mysqli_num_rows($result) > 0) {
 								while ($data = mysqli_fetch_array($result)) {
@@ -202,7 +205,7 @@ include('./includes/config.php');
 						</div>
 						<div class="row prod_2 text-center mt-4">
 							<?php
-							$select = "select * from products where product_category = 9 limit 4";
+							$select = "select * from products where product_category = 4 limit 4";
 							$result = mysqli_query($connection, $select);
 							if (mysqli_num_rows($result) > 0) {
 								while ($data = mysqli_fetch_array($result)) {
@@ -283,7 +286,7 @@ include('./includes/config.php');
 						<div class="prod_o2i row mt-4">
 
 							<?php
-							$select = "select * from products where product_category = 6 limit 4";
+							$select = "select * from products where product_category = 5 limit 4";
 							$result = mysqli_query($connection, $select);
 							if (mysqli_num_rows($result) > 0) {
 								while ($data = mysqli_fetch_array($result)) {

@@ -26,7 +26,8 @@ if (isset($_POST['signup_btn'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Eco Mart</title>
+    <title>Eco Mart | Signup</title>
+    <link rel="icon" type="image/x-icon" href="./uploadimg/fav-icon.png">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/global.css" rel="stylesheet">
